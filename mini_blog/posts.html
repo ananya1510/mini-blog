@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="stylee.css">
+    <style>
+        body {
+            position: relative;
+        }
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .menu button {
+            margin-left: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu button:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-snapshot">
+        <img src="images/lp.jpg" alt="Snapshot" class="snapshot-image">
+        <div class="snapshot-text">SnapShotBlogs</div>
+    </div>
+    <div class="profile-container">
+        <span>Logged in as:</span> <span id="profile-username"></span>
+    </div>
+    <div class="menu">
+        <button id="show-bookmarks-button">Show Bookmarks</button>
+        <button id="show-categories-button">Show Categories</button>
+    </div>
+    <div class="blog-container">
+        <div id="posts">
+            <div class="post">
+                <h3>Welcome to SnapShotBlogs</h3>
+                <p>This is your first blog post! Feel free to bookmark it.</p>
+                <img src="images/blogssss.jpg" alt="First Blog Image" style="max-width: 100%;">
+                <div class="post-buttons">
+                    <button class="bookmark-button">Bookmark</button>
+                </div>
+            </div>
+            <div class="post">
+                <h3>Exploring Nature</h3>
+                <p>Nature is beautiful. Enjoy the little things in life.</p>
+                <img src="images/nature.jpg" alt="Nature Image" style="max-width: 100%;">
+                <div class="post-buttons">
+                    <button class="bookmark-button">Bookmark</button>
+                </div>
+            </div>
+        </div>
+        <div class="new-post">
+            <h2>Create New Post</h2>
+            <input type="text" id="new-title" placeholder="Title">
+            <textarea id="new-content" rows="4" placeholder="Content"></textarea>
+            <input type="file" id="new-image" accept="image/*">
+            <button id="create-button">Create Post</button>
+        </div>
+    </div>
+    <div id="bookmarks-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-bookmarks-modal">&times;</span>
+            <h2>Bookmarked Posts</h2>
+            <div id="bookmarks"></div>
+        </div>
+    </div>
+    <div id="categories-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-categories-modal">&times;</span>
+            <h2>Categories</h2>
+            <ul id="categories">
+                <li>Technology</li>
+                <li>Lifestyle</li>
+                <li>Travel</li>
+            </ul>
+        </div>
+    </div>
+    <script src="scriptss.js"></script>
+</body>
+</html>

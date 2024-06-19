@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini blog Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #446b8f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .site-title {
+            font-size: 2rem;
+            color: #130f0f;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .auth-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .auth-container h2 {
+            margin-top: 0;
+        }
+        .auth-container input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .auth-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .auth-container button:hover {
+            background-color: #0056b3;
+        }
+        .auth-container .toggle-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .auth-container .toggle-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-title">SnapShotsBlog</div>
+    <div class="auth-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <span class="toggle-link" onclick="toggleAuth()">Don't have an account? Sign up</span>
+    </div>
+
+    <script>
+        function toggleAuth() {
+            const container = document.querySelector('.auth-container');
+            const isLogin = container.querySelector('h2').innerText === 'Login';
+            container.querySelector('h2').innerText = isLogin ? 'Sign Up' : 'Login';
+            container.querySelector('button').innerText = isLogin ? 'Sign Up' : 'Login';
+            container.querySelector('button').onclick = isLogin ? signup : login;
+            container.querySelector('.toggle-link').innerText = isLogin ? 'Already have an account? Login' : "Don't have an account? Sign up";
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+
+            if (username === storedUsername && password === storedPassword) {
+                alert('Login successful');
+                window.location.href = 'posts.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
+        function signup() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                alert('Signup successful');
+                window.location.href = 'posts.html';
+            } else {
+                alert('Please enter a valid username and password');
+            }
+        }
+    </script>
+</body>
+</html>
